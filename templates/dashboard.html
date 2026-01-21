@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard – Cyber Haztech</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#081a2d;
+            color:white;
+            padding:40px;
+        }
+        h1{ color:#9cc9ff; }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+        th,td{
+            padding:12px;
+            border:1px solid #123c66;
+            text-align:left;
+        }
+        th{
+            background:#123c66;
+        }
+        tr:nth-child(even){
+            background:#0e2a47;
+        }
+        .safe{
+            color:lightgreen;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚨 Live Attack Alerts – Cyber Haztech</h1>
+
+{% if alerts %}
+<table>
+    <tr>
+        <th>Attack Type</th>
+        <th>IP Address</th>
+        <th>Time</th>
+    </tr>
+    {% for a in alerts %}
+    <tr>
+        <td>{{ a.type }}</td>
+        <td>{{ a.ip }}</td>
+        <td>{{ a.time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="safe">✅ No attacks detected yet.</p> 
+{% endif %}
+
+</body>
+</html>
